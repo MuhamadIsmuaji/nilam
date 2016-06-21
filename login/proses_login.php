@@ -16,17 +16,14 @@ if ( isset($_POST['username']) && isset($_POST['password']) ) {
 		session_start();
 		$data = mysql_fetch_array($get_query);
 
+		$_SESSION['id_user']		= $data['id_user'];
 		$_SESSION['nama']			= $data['nama'];
         $_SESSION['username']		= $data['username'];
         $_SESSION['level_user']		= $data['level_user'];
+        $_SESSION['status_login']	= 1;
 
-		if ( $_SESSION['level_user'] == 'admin' ) { // jika dia admin
-   			
-   			header('location: index_admin.php');
-		
-		} else { // jika dia member
-   			header('location: index_member.php');
-		}	
+   		header('location: index_login.php');
+			
 
 	} else {
 		echo "<script>alert('Kombinasi Username dan Password Salah')</script>";

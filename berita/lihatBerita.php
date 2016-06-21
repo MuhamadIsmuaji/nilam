@@ -9,7 +9,7 @@ if(isset($_GET['hal']))
 }
 $offset   = ($noPage - 1) * $dataPerPage;
 include "koneksi.php";
-$ambil_data = mysql_query("select * from tbl_berita order by id_berita desc limit $offset, $dataPerPage",$koneksi);
+$ambil_data = mysql_query("select * from tbl_berita where validasi = 1 order by id_berita desc limit $offset, $dataPerPage",$koneksi);
 $hitung_record = mysql_query("SELECT COUNT(*) AS jumData FROM tbl_berita",$koneksi);
 $data          = mysql_fetch_array($hitung_record);
 $jumData       = $data['jumData'];
